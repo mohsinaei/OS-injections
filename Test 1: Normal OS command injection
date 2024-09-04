@@ -7,7 +7,7 @@ Next, see the request captured. Do you see any parameters sent?
 It yes, then try to play around with the parameters to see if you can hack it.
 
 Like let's say that we have this request in Burp.
-
+**
 POST /product/stock HTTP/2
 Host: mywebsite.net
 Cookie: session=kRaQpyn7qTtVmADGJ2k4a7bKLNG26e9d
@@ -28,7 +28,7 @@ Accept-Encoding: gzip, deflate, br
 Priority: u=1, i
 
 productId=1&storeId=1
-
+**
 After that, send this request to the repeater because we want to send multiple requests and try each result.
 
 Then, change the request to this below:

@@ -39,5 +39,5 @@ or
 
 productId=1&storeId=1|whoami
 
-Then, send it.
+Then, send the request and you will see that the response has some info.
 

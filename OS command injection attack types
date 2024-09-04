@@ -1,8 +1,8 @@
 There are two types of OS command injection attacks: normal OS command injection and blind OS command injection attacks.
 
-Normal OS command injection attack: the output of the command is visible in the HTTP response
-Blind OS command injection attack: the output of the command is not visible in the HTTP reponse
+Normal OS command injection attack: the output of the command is visible in the HTTP response.
+Blind OS command injection attack: the output of the command is not visible in the HTTP reponse.
 
-
+Many attacks can be performed using blind OS command injections.
 
 
